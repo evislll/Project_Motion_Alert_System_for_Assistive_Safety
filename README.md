@@ -5,7 +5,7 @@ The solution implements a real-time motion detection and alert system using the 
 # Author: Ekaterina Vislova
 Date: 2025-11-30
 
-# main.c - code for Motion Alert System for Assistive Safety Project for SEH600 course
+# main.c - code for Motion Alert System for Assistive Safety Project for SEH500 course
 Seneca Polytechnic, School of Software Design & Data Science
 The FXOS8700 bubble example from the NXP SDK used as a reference for
 -Device initialization with the correct I²C bus initialization sequence
@@ -22,7 +22,7 @@ Subsystems,logic, hardware interactions modules developed independently
 
 # function.s-Led control using Assembly
 Assembly code for Motion Alert System for Assistive Safety Project
-Code logic for register access is based on documentation for lab work for SEH600 course
+Code logic for register access is based on documentation for lab work for SEH500 course
 Seneca Polytechnic, "SEH500 Lab 7," Seneca BSA GitHub Pages, 2025. [Online]. Available: https://seneca-bsa.github.io/bsa/seh500/lab7/
 Prof.: Jacky Lau
 Seneca Polytechnic, School of Software Design & Data Science
