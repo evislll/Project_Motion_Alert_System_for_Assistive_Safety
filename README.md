@@ -17,6 +17,7 @@ demonstrates the code components used in main.c and function.s  files.
 
 # Accelerometer Readings and Data Acquisition
 The system initializes the FXOS8700CQ accelerometer through I²C communication, configuring the sensor for continuous data acquisition. The FXOS8700 bubble example from the NXP SDK[6] used as a reference for device initialization with the correct I²C bus initialization sequence, driver functions for reading X, Y axis data from registers, converting 14-bit data into degrees using a scaling formula. Constantly monitored Sensor addresses use just 0x1CU, 0x1DU- Accelerometer addresses on SA0 pins, removing monitoring Magnetometer addresses for performance enhancement. 
+![photo_2026-01-15_22-12-11](https://github.com/user-attachments/assets/e549cad9-fed8-453f-8c2a-5f0eca397fa5)
 
 The core processing algorithm implements multi-threshold tilt classification using if conditions . The classification logic processes X, Y, and Z-axis data to determine device orientation: 
 
