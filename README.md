@@ -2,20 +2,6 @@
 - The solution implements a real-time motion detection and alert system using the FRDM-K66F development board with integrated FXOS8700CQ accelerometer.
 - The system **monitors tilt orientation, triggering alerts through RGB LED indicators and an external buzzer.**
 
-The FXOS8700 bubble example from the NXP SDK used as a reference for
-* Device initialization with the correct I²C bus initialization sequence
-* Driver functions for reading X, Y axis data from registers
-* Converting 14-bit data into degrees using scaling formula
-NXP Semiconductors, "Bubble Peripheral Demo Application — MCUXpresso SDK," MCUXpresso SDK Documentation, 2025. [Online].
-Available: https://mcuxpresso.nxp.com/mcuxsdk/latest/html/examples/demo_apps/bubble_peripheral/readme.html
-
-Subsystems,logic, hardware interactions modules developed independently
-* All tilt multi-threshold classification
-* Z-value interpretation logic for new orientation modes detection
-* Buzzer alert control (initialization, configuration, sound pattern)
-* LED control design ( busy-wait, assembly functions)
-
-
 # Hardware Components
 * The system uses the following hardware
 * FRDM-K66F Development Board: Cortex-M4 processor 
@@ -27,10 +13,12 @@ Subsystems,logic, hardware interactions modules developed independently
 # Software Architecture
 Motion Alert System for Assistive Safety - Class Diagram
 demonstrates the code components used in main.c and function.s  files.
+<img width="1378" height="898" alt="Screenshot 2025-11-30 195319" src="https://github.com/user-attachments/assets/72e0fecc-9d73-4059-9cdd-329c04762510" />
 
 # Accelerometer Readings and Data Acquisition
-The system initializes the FXOS8700CQ accelerometer through I²C communication, configuring the sensor for continuous data acquisition. The FXOS8700 bubble example from the NXP SDK[6] used as a reference for device initialization with the correct I²C bus initialization sequence, driver functions for reading X, Y axis data from registers, converting 14-bit data into degrees using a scaling formula. Constantly monitored Sensor addresses use just 0x1CU, 0x1DU- Accelerometer addresses on SA0 pins, removing monitoring Magnetometer addresses for performance enhancement. Configuration for range, scaling follows the manufacturer's default specifications [3][4]. 
-The core processing algorithm implements multi-threshold tilt classification using if conditions . The classification logic processes X, Y, and Z-axis data to determine device orientation discussed in detail in the Results section. 
+The system initializes the FXOS8700CQ accelerometer through I²C communication, configuring the sensor for continuous data acquisition. The FXOS8700 bubble example from the NXP SDK[6] used as a reference for device initialization with the correct I²C bus initialization sequence, driver functions for reading X, Y axis data from registers, converting 14-bit data into degrees using a scaling formula. Constantly monitored Sensor addresses use just 0x1CU, 0x1DU- Accelerometer addresses on SA0 pins, removing monitoring Magnetometer addresses for performance enhancement. 
+
+The core processing algorithm implements multi-threshold tilt classification using if conditions . The classification logic processes X, Y, and Z-axis data to determine device orientation: 
 
 * Face-Up Horizontal (zAngle > 45°): White LED (all LEDs on) 
 * Face-Down Horizontal (zAngle < -45°): Red LED + Buzzer
@@ -52,7 +40,24 @@ The internal oscillator generates the tone and Voltage level determines sound. *
 ON/OFF control via GPIO, the buzzer is connected to Port B, Pin 5
 
 
+
+
 # References
+
+The FXOS8700 bubble example from the NXP SDK used as a reference for
+* Device initialization with the correct I²C bus initialization sequence
+* Driver functions for reading X, Y axis data from registers
+* Converting 14-bit data into degrees using scaling formula
+NXP Semiconductors, "Bubble Peripheral Demo Application — MCUXpresso SDK," MCUXpresso SDK Documentation, 2025. [Online].
+Available: https://mcuxpresso.nxp.com/mcuxsdk/latest/html/examples/demo_apps/bubble_peripheral/readme.html
+
+Subsystems,logic, hardware interactions modules developed independently
+* All tilt multi-threshold classification
+* Z-value interpretation logic for new orientation modes detection
+* Buzzer alert control (initialization, configuration, sound pattern)
+* LED control design ( busy-wait, assembly functions)
+
+* 
 - [3] T. Ozyagcilar, "Using the Xtrinsic FXOS8700CQ Transient-Acceleration Function," Application Note AN4461, Rev. 0, Freescale Semiconductor, Jun. 2012. [Online]. Available: https://www.nxp.com/docs/en/application-note/AN4461.pdf
 - [4] NXP Semiconductors, "FXOS8700CQ: 6-axis sensor with integrated linear accelerometer and magnetometer, Rev. 8," Data Sheet: Technical Data, Apr. 25, 2017. [Online]. Available: https://www.nxp.com/docs/en/data-sheet/FXOS8700CQ.pdf
 - [5] NXP Semiconductors, "FRDM-K66F: Low cost development platform for Kinetis K66, K65, and K26 MCUs," Mbed, Apr. 2019. [Online]. Available: https://os.mbed.com/platforms/FRDM-K66F/
@@ -60,4 +65,4 @@ ON/OFF control via GPIO, the buzzer is connected to Port B, Pin 5
 - [7]NX P Semiconductors. "LPC GPIO." MCUXpresso SDK API Reference Manual. https://mcuxpresso.nxp.com/api_doc/dev/116/group__lpc__gpio.html(accessed Nov. 30, 2025)
 - [8] Seneca College, "SEH500 Lab 7," Seneca BSA GitHub Pages, 2025. [Online]. Available: https://seneca-bsa.github.io/bsa/seh500/lab7/
 
-The complete source code is available in the GitHub repository:https://github.com/evislll/Project_Motion_Alert_System_for_Assistive_Safety.git
+
