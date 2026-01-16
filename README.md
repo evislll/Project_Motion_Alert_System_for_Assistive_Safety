@@ -57,7 +57,6 @@ Subsystems,logic, hardware interactions modules developed independently
 * Buzzer alert control (initialization, configuration, sound pattern)
 * LED control design ( busy-wait, assembly functions)
 
-* 
 - [3] T. Ozyagcilar, "Using the Xtrinsic FXOS8700CQ Transient-Acceleration Function," Application Note AN4461, Rev. 0, Freescale Semiconductor, Jun. 2012. [Online]. Available: https://www.nxp.com/docs/en/application-note/AN4461.pdf
 - [4] NXP Semiconductors, "FXOS8700CQ: 6-axis sensor with integrated linear accelerometer and magnetometer, Rev. 8," Data Sheet: Technical Data, Apr. 25, 2017. [Online]. Available: https://www.nxp.com/docs/en/data-sheet/FXOS8700CQ.pdf
 - [5] NXP Semiconductors, "FRDM-K66F: Low cost development platform for Kinetis K66, K65, and K26 MCUs," Mbed, Apr. 2019. [Online]. Available: https://os.mbed.com/platforms/FRDM-K66F/
